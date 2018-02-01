@@ -110,8 +110,14 @@ open class MaskedLabel: UILabel {
         context?.clip(to: rect, mask: mask)
         
         if let colorComponents = colorComponents {
-            let startPoint = self.startPoint ?? CGPoint(x: rect.minX, y: rect.minY)
-            let endPoint = self.endPoint ?? CGPoint(x: rect.maxX, y: rect.maxY)
+			let startDimen = self.startPoint ?? CGPoint(x: 0.0, y: 0.0)
+			let endDimen = self.endPoint ?? CGPoint(x: 1.0, y: 1.0)
+			
+			let width = rect.width
+			let height = rect.height
+			
+            let startPoint = CGPoint(x: rect.minX + (width * startDimen.x), y: rect.minY + (height * startDimen.y))
+            let endPoint = CGPoint(x: rect.minX + (width * endDimen.x), y: rect.minY + (height * endDimen.y))
             
             context?.concatenate(CGAffineTransform(a: 1, b: 0, c: 0, d: -1, tx: 0, ty: rect.height))
             context?.drawGradient(withColorComponents: colorComponents, locations: gradientLocations, startPoint: startPoint, endPoint: endPoint)
