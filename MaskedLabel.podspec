@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
   s.social_media_url = 'https://twitter.com/_diego_rincon'
   s.source           = { :git => 'https://github.com/darincon/MaskedLabel.git', :tag => '0.9.2' }
 
-  s.ios.deployment_target = '10.0'
+  s.ios.deployment_target = ‘9.0’
 
   s.source_files     = 'MaskedLabel/*.swift'
 
